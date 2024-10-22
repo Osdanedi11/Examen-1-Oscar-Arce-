@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Reciclaje</title>
+    <link rel="stylesheet" href="Estilo.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Sistema de Gestión de Reciclaje</h1>
+    </header>
+
+    <div class="container">
+        <!-- Registro de materiales reciclables -->
+        <h2>Registro de Materiales Reciclables</h2>
+        <form id="recycling-form">
+            <div class="form-group">
+                <label for="user-name">Nombre del Usuario:</label>
+                <input type="text" id="user-name" name="user-name" required>
+            </div>
+
+            <div class="form-group">
+                <h3>Seleccione los materiales reciclables y la cantidad: </h3>
+
+                <!-- Papel -->
+                <div class="material-group">
+                    <label for="material-papel">
+                        <input type="checkbox" id="material-papel" name="materials" value="Papel"
+                            onchange="toggleInput('papel')">
+                        Papel
+                    </label>
+                    <input type="number" id="cantidad-papel" placeholder="Cant. (kgs)" min="0" disabled>
+                </div>
+
+                <!-- Cartón -->
+                <div class="material-group">
+                    <label for="material-carton">
+                        <input type="checkbox" id="material-carton" name="materials" value="Cartón"
+                            onchange="toggleInput('carton')">
+                        Cartón
+                    </label>
+                    <input type="number" id="cantidad-carton" placeholder="Cant. (kgs)" min="0" disabled>
+                </div>
+
+                <!-- Vidrio -->
+                <div class="material-group">
+                    <label for="material-vidrio">
+                        <input type="checkbox" id="material-vidrio" name="materials" value="Vidrio"
+                            onchange="toggleInput('vidrio')">
+                        Vidrio
+                    </label>
+                    <input type="number" id="cantidad-vidrio" placeholder="Cant. (kgs)" min="0" disabled>
+                </div>
+
+                <!-- Plástico -->
+                <div class="material-group">
+                    <label for="material-plastico">
+                        <input type="checkbox" id="material-plastico" name="materials" value="Plástico"
+                            onchange="toggleInput('plastico')">
+                        Plástico
+                    </label>
+                    <input type="number" id="cantidad-plastico" placeholder="Cant. (kgs)" min="0" disabled>
+                </div>
+
+                <!-- Metal -->
+                <div class="material-group">
+                    <label for="material-metal">
+                        <input type="checkbox" id="material-metal" name="materials" value="Metal"
+                            onchange="toggleInput('metal')">
+                        Metal
+                    </label>
+                    <input type="number" id="cantidad-metal" placeholder="Cant. (kgs)" min="0" disabled>
+                </div>
+
+            </div>
+            <button type="button" onclick="registerRecycling()">Registrar Reciclaje</button>
+        </form>
+
+        <!-- Tabla reciclaje  -->
+        <h2>Reciclaje Registrado</h2>
+        <table id="recycling-table">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Material</th>
+                    <th>Cantidad (kg)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+
+        </table>
+
+        <!-- Estadisticas reciclaje -->
+        <div class="stats">
+            <h2>Estadísticas de Reciclaje</h2>
+            <p>Total reciclado por la comunidad: <span id="total-recycled">0</span> kg</p>
+            <p>Usuario con mayor reciclaje: <span id="top-user">N/A</span></p>
+        </div>
+
+        <!-- Puntos y recompensas -->
+        <div class="puntos">
+            <h2>Puntos y Recompensas</h2>
+            <p><strong>Nombre del Usuario:</strong> <span id="premio-user">N/A</span></p>
+            <p><strong>Puntos Acumulados:</strong> <span id="puntos">0</span> pts</p>
+            <p><strong>Recompensa:</strong> <span id="premio">N/A</span></p>
+        </div>
+    </div>
+
+    <script src="Script.js"></script>
+
+</body>
+
+</html>
